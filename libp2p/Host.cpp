@@ -592,6 +592,9 @@ void Host::connect(std::shared_ptr<Peer> const& _p)
     if (!m_run)
         return;
     
+    if (_p->id == id())
+        return;
+
     if (havePeerSession(_p->id))
     {
         cnetdetails << "Aborted connect. Node already connected.";
